@@ -1,7 +1,7 @@
 const PatientList = () => {
   return (
     <div>
-      <h3 className='underline'>Patient List</h3>
+      <h3>Patient List</h3>
     </div>
   );
 };
