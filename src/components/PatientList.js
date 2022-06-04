@@ -1,7 +1,7 @@
 const PatientList = () => {
   return (
-    <div>
-      <h3>Patient List</h3>
+    <div className='md:w-1/2 lg:w-3/5'>
+      <h2 className='font-black text-3xl text-center'>Patient List</h2>
     </div>
   );
 };
