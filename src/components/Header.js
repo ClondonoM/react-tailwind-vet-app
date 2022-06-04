@@ -4,7 +4,7 @@ import cat from '../assets/cat.svg';
 const Header = () => {
   return (
     <>
-      <div className='container flex mb-5 justify-around '>
+      <div className='container flex mt-1 mb-5 justify-around '>
         <img src={dog} alt='dog.svg' width='80px' />
         <img src={cat} alt='cat.svg' width='80px' />
       </div>
