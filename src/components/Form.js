@@ -1,10 +1,9 @@
 const Form = () => {
   return (
     <div className='md:w-1/2 lg:w-2/5'>
-      <h2 className='font-black text-3xl text-center'>Patient Follow-up</h2>
-      <p className='text-lg mt-5 text-center mb-5'>
-        Add Patient and{' '}
-        <span className='text-indigo-600 font-bold '>Admin</span>
+      <h2 className='font-black text-3xl text-center '>Patient Follow-up</h2>
+      <p className='text-lg mt-20 text-center mb-5'>
+        Add Patient and <span className='text-green-600 font-bold '>Admin</span>
       </p>
       <form className='bg-white shadow-md rounded-md py-10 px-5 ml-5'>
         <div className=''>
@@ -12,13 +11,13 @@ const Form = () => {
             htmlFor='pet'
             className='block text-gray-700 uppercase font-bold'
           >
-            Pet Name{' '}
+            <i class='fa-solid fa-paw'> </i> Pet Name{' '}
           </label>
           <input
             type='text'
             id='pet'
             placeholder='Pet Name'
-            className='border-2 w-full p-2 mt-2 placeholder-gray-400 rounded-md'
+            className='border-2 w-full p-2 mt-2 placeholder-green-400 rounded-md'
           />
         </div>
       </form>
