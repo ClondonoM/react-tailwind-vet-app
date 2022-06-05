@@ -8,6 +8,12 @@ const Form = ({ patients, setPatients }) => {
   const [admissionDate, setAdmissionDate] = useState('');
   const [symptoms, setSymptoms] = useState('');
   const [error, setError] = useState(false);
+  const idGenerator = () => {
+    const random = Math.random().toString(36).substring(2);
+    const date = Date.now().toString(36).substring(2);
+    return random + date;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if ([name, petOwner, email, admissionDate, symptoms].includes('')) {
@@ -15,7 +21,14 @@ const Form = ({ patients, setPatients }) => {
       return;
     }
     setError(false);
-    const objPatient = { name, petOwner, email, admissionDate, symptoms };
+    const objPatient = {
+      name,
+      petOwner,
+      email,
+      admissionDate,
+      symptoms,
+      id: idGenerator(),
+    };
 
     setPatients([...patients, objPatient]);
     setName('');
@@ -113,7 +126,7 @@ const Form = ({ patients, setPatients }) => {
             onChange={(e) => setSymptoms(e.target.value)}
           ></textarea>
         </div>
-        {error && <Error message='All fields are required' />}
+        {error && <Error>All fields are required</Error>}
         <input
           type='submit'
           className='bg-green-600 hover:bg-green-700 text-white font-bold p-3 w-full rounded-md mt-2 cursor-pointer transition-colors'
