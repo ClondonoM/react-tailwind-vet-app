@@ -6,8 +6,14 @@ const Form = () => {
   const [email, setEmail] = useState('');
   const [admissionDate, setAdmissionDate] = useState('');
   const [symptoms, setSymptoms] = useState('');
+  const [error, setError] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    if ([name, petOwner, email, admissionDate, symptoms].includes('')) {
+      setError(true);
+      return;
+    }
+    setError(false);
   };
   return (
     <div className='md:w-1/2 lg:w-2/5 mx-3'>
@@ -17,8 +23,8 @@ const Form = () => {
         <span className='text-green-600 font-bold text-xl '>Admin</span>
       </p>
       <form
-        className='bg-white shadow-md rounded-md py-5 px-5 ml-5 mb-10'
         onSubmit={handleSubmit}
+        className='bg-white shadow-md rounded-md py-5 px-5 ml-5 mb-10'
       >
         <div className='mb-5'>
           <label
@@ -98,6 +104,11 @@ const Form = () => {
             onChange={(e) => setSymptoms(e.target.value)}
           ></textarea>
         </div>
+        {error && (
+          <p className='bg-red-600 text-white text-center uppercase font-bold p-3 mb-5 rounded-md'>
+            All fields are required
+          </p>
+        )}
         <input
           type='submit'
           className='bg-green-600 hover:bg-green-700 text-white font-bold p-3 w-full rounded-md mt-2 cursor-pointer transition-colors'
