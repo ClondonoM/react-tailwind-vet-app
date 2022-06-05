@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Error from './Error';
 
 const Form = ({ patients, setPatients }) => {
   const [name, setName] = useState('');
@@ -112,11 +113,7 @@ const Form = ({ patients, setPatients }) => {
             onChange={(e) => setSymptoms(e.target.value)}
           ></textarea>
         </div>
-        {error && (
-          <p className='bg-red-600 text-white text-center uppercase font-bold p-3 mb-5 rounded-md'>
-            All fields are required
-          </p>
-        )}
+        {error && <Error message='All fields are required' />}
         <input
           type='submit'
           className='bg-green-600 hover:bg-green-700 text-white font-bold p-3 w-full rounded-md mt-2 cursor-pointer transition-colors'
