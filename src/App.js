@@ -5,7 +5,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className='container mx-auto mt-20'>
+    <div className='container mx-auto mt-10'>
       <Header />
       <div className='mt-12 md:flex'>
         <Form />
