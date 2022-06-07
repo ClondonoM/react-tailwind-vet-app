@@ -1,13 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Error from './Error';
 
-const Form = ({ patients, setPatients }) => {
+const Form = ({ patients, setPatients, patient, setPatient }) => {
   const [name, setName] = useState('');
   const [petOwner, setPetOwner] = useState('');
   const [email, setEmail] = useState('');
   const [admissionDate, setAdmissionDate] = useState('');
   const [symptoms, setSymptoms] = useState('');
   const [error, setError] = useState(false);
+  useEffect(() => {
+    if (Object.keys(patient).length > 0) {
+      setName(patient.name);
+      setPetOwner(patient.petOwner);
+      setEmail(patient.email);
+      setAdmissionDate(patient.admissionDate);
+      setSymptoms(patient.symptoms);
+    }
+  }, [patient]);
+
   const idGenerator = () => {
     const random = Math.random().toString(36).substring(2);
     const date = Date.now().toString(36).substring(2);
@@ -27,10 +37,23 @@ const Form = ({ patients, setPatients }) => {
       email,
       admissionDate,
       symptoms,
-      id: idGenerator(),
     };
+    if (patient.id) {
+      //Editing;
+      objPatient.id = patient.id;
 
-    setPatients([...patients, objPatient]);
+      const newPatients = patients.map((p) =>
+        p.id === patient.id ? objPatient : p
+      );
+      setPatients(newPatients);
+      setPatient({});
+    } else {
+      //Adding
+      objPatient.id = idGenerator();
+      setPatients([...patients, objPatient]);
+    }
+
+    // Form reset
     setName('');
     setPetOwner('');
     setEmail('');
@@ -39,8 +62,10 @@ const Form = ({ patients, setPatients }) => {
   };
   return (
     <div className='md:w-1/2 lg:w-2/5 mx-3'>
-      <h2 className='font-black text-3xl text-center '>Patient Follow-up</h2>
-      <p className='text-lg mt-10 text-center mb-5'>
+      <h2 className='font-black text-3xl text-center mb-5 '>
+        Patient Follow-up
+      </h2>
+      <p className='text-lg text-center mb-5'>
         Add Patient and{' '}
         <span className='text-green-600 font-bold text-xl '>Admin</span>
       </p>
@@ -129,8 +154,8 @@ const Form = ({ patients, setPatients }) => {
         {error && <Error>All fields are required</Error>}
         <input
           type='submit'
-          className='bg-green-600 hover:bg-green-700 text-white font-bold p-3 w-full rounded-md mt-2 cursor-pointer transition-colors'
-          value='Add Patient'
+          className='bg-green-600 hover:bg-green-700 text-white font-bold p-3 w-full rounded-md mt-2 cursor-pointer transition-colors uppercase'
+          value={patient.id ? 'Update Patient' : 'Add Patient'}
         />
       </form>
     </div>

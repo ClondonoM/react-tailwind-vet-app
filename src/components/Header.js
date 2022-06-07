@@ -4,13 +4,15 @@ import cat from '../assets/cat.svg';
 const Header = () => {
   return (
     <>
-      <div className='container flex mt-1 mb-5 justify-around '>
-        <img src={dog} alt='dog.svg' width='80px' />
-        <img src={cat} alt='cat.svg' width='80px' />
+      <div className='container flex md:mx-auto mt-1  justify-around '>
+        <img src={dog} alt='dog.svg' width='60px' />
+
+        <h1 className='font-black text-5xl text-center '>
+          Patient Follow-up <span className='text-green-600'>Vet</span>
+        </h1>
+
+        <img src={cat} alt='cat.svg' width='60px' />
       </div>
-      <h1 className='font-black text-5xl text-center w-2/3 md:mx-auto'>
-        Patient Follow-up <span className='text-green-600'>Vet</span>
-      </h1>
     </>
   );
 };
