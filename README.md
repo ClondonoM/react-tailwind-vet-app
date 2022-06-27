@@ -2,7 +2,7 @@
 
 ## react-tailwind-vet-app
 
-Vet appointments App allows you to record the appointments of veterinary patients. Data is stored locally .It was created with react and tailwind-css
+Vet appointments App allows you to record the appointments of veterinary patients. Data is stored locally. It was created with react and tailwind-css
 
 ## Getting Started with Create React App
 
